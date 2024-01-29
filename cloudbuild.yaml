@@ -1,13 +1,21 @@
 steps:
   # 1. Checkout the code from GitHub
   - name: 'gcr.io/cloud-builders/git'
-    args: ['clone', 'https://github.com/AjaydevanR/your-calculator-repo.git']
+    args: ['clone', 'https://github.com/AjaydevanR/usecase-4.git']
 
   # 2. Install Python dependencies (if any beyond standard libraries)
   - name: 'python:3.9'
     entrypoint: 'pip'
-    args: ['install', '-r', 'requirements.txt']  # Replace with your requirements file if needed
+    args: ['install']  # Replace with your requirements file if needed
 
   # 3. Run the calculator app
   - name: 'python:3.9'
     args: ['calculator.py']  # Replace with the actual filename of your Python script
+
+  # 4. Build Docker image
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '-t', 'gcr.io/use-case-4-ci-cd/python-calculator-build', '.']
+ 
+  # 5. Push image to Artifact Registry
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'gcr.io/use-case-4-ci-cd/python-calculator-push']
