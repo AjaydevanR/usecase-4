@@ -1,0 +1,13 @@
+steps:
+  # 1. Checkout the code from GitHub
+  - name: 'gcr.io/cloud-builders/git'
+    args: ['clone', 'https://github.com/AjaydevanR/your-calculator-repo.git']
+
+  # 2. Install Python dependencies (if any beyond standard libraries)
+  - name: 'python:3.9'
+    entrypoint: 'pip'
+    args: ['install', '-r', 'requirements.txt']  # Replace with your requirements file if needed
+
+  # 3. Run the calculator app
+  - name: 'python:3.9'
+    args: ['calculator.py']  # Replace with the actual filename of your Python script
