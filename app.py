@@ -3,11 +3,11 @@ app = Flask(__name__)
 
 @app.route("/")
 def main():
-    return "Welcome!"
+    return "Vanakkam"
 
 @app.route('/how')
 def hello():
-    return 'I am good, how about you?'
+    return 'welcome to usecase 4'
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=8080)
