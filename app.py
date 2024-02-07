@@ -5,7 +5,7 @@ app = Flask(__name__)
 def main():
     return "This is usecase 4"
 
-@app.route('/how')
+@app.route('/hi')
 def hello():
     return 'Vanakkam da Mapla'
 
